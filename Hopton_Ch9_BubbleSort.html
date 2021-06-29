@@ -1,0 +1,137 @@
+<html>
+<head>
+<script>
+var array = [
+    ["Robert Hill", 123.54],["Christopher Reddkin", 54.67],["Maggie Woods", 1000.87],["Jennifer Jones", 3.34],["Marcus Parker", 64.98]
+];
+
+function buildTable() {
+	for (var i = 0; i < 5; i++) {
+		// Logic to grab the ID of the table element in the HTML
+		var tableString = "table" + i; // Row 1
+		var tableString2 = "tablec" + i; // Row 2
+		// Writes every member of the array into the table using .innerHTML
+		document.getElementById(tableString).innerHTML = array[i][0];
+		document.getElementById(tableString2).innerHTML = array[i][1];
+	}
+	bubbleSort();
+}
+
+// This will sort the data in descending order (highest to lowest)
+function bubbleSort () {
+	var k = 0;
+	var flag = 0;
+	var temp;
+	var tempname;
+	
+	while (flag == 0) {
+		flag = 1;
+		for (k = 0; k <= 3; k++){
+			if (array[k][1] < array[k + 1][1]){ // This will only activate if the array member's number is smaller than the next array member's number.
+				// Storing the current array member's data into temporary variables to swap later.
+				temp = array[k][1];
+				tempname = array[k][0];
+				// The current array members are now equal to the next array member's data.
+				array[k][1] = array[k+1][1];
+				array[k][0] = array[k+1][0];
+				// The next array member's data gets the old data to "swap" it.
+				array[k+1][1] = temp;
+				array[k+1][0] = tempname;
+				flag = 0;
+			}
+		}
+	}
+	
+	rebuildTable();
+}
+
+function rebuildTable(){
+	for (var i = 0; i < 5; i++) {
+		// Logic to grab the ID of the table element in the HTML
+		var tableString = "tables" + i; // Row 1
+		var tableString2 = "tablesc" + i; // Row 2
+		// Writes every member of the array into the table using .innerHTML
+		document.getElementById(tableString).innerHTML = array[i][0];
+		document.getElementById(tableString2).innerHTML = array[i][1];
+	}
+}
+</script>
+<style>
+body {font-family: helvetica;
+padding-left: 20px;
+padding-top: 10px;}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+</style>
+</head>
+<body onload="buildTable()">
+<h2>Original Data</h2>
+<table>
+<tr>
+<th>Employee</th>
+<th>Check Amount</th>
+</tr>
+<!-- Row 1 -->
+<tr>
+<td><span id="table0"></span></td>
+<td><span id="tablec0"></span></td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td><span id="table1"></span></td>
+<td><span id="tablec1"></span></td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td><span id="table2"></span></td>
+<td><span id="tablec2"></span></td>
+</tr
+<!-- Row 4 -->
+<tr>
+<td><span id="table3"></span></td>
+<td><span id="tablec3"></span></td>
+</tr>
+<!-- Row 5 -->
+<tr>
+<td><span id="table4"></span></td>
+<td><span id="tablec4"></span></td>
+</tr>
+</table>
+<h2>Data After Bubble Sort</h2>
+<table>
+<tr>
+<th>Employee</th>
+<th>Check Amount</th>
+</tr>
+<!-- Row 1 -->
+<tr>
+<td><span id="tables0"></span></td>
+<td><span id="tablesc0"></span></td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td><span id="tables1"></span></td>
+<td><span id="tablesc1"></span></td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td><span id="tables2"></span></td>
+<td><span id="tablesc2"></span></td>
+</tr
+<!-- Row 4 -->
+<tr>
+<td><span id="tables3"></span></td>
+<td><span id="tablesc3"></span></td>
+</tr>
+<!-- Row 5 -->
+<tr>
+<td><span id="tables4"></span></td>
+<td><span id="tablesc4"></span></td>
+</tr>
+</table>
+</body>
+</html>
